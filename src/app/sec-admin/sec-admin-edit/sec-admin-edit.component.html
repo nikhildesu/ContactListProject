@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Update Contact</h2>
+<mat-dialog-content>
+    <form #ContactForm="ngForm" novalidate>
+        <div class="form-group">
+           Contact Name <input type="text" [(ngModel)]="contact.contactName" name="cnam" class="form-control">
+          </div>
+        <div class="form-group">
+            Contact Number <input type="text" [(ngModel)]="contact.contactNumber" name="cnum" class="form-control">
+        </div>
+
+
+      </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+ 
+  <!-- Can optionally provide a result for the closing dialog. -->
+  <button mat-button (click)="updateContact()">Update</button>
+  <button mat-button mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

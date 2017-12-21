@@ -1,0 +1,19 @@
+<br><br><br><br>
+
+
+
+<h2 align="center"> Login</h2>
+<br>{{loginError}}
+<form class="col-md-4 col-md-offset-4" (submit)="ValidateLogin()" novalidate #loginForm="ngForm">
+  <div class="form-group">
+    <input type="text" class="form-control"   required [(ngModel)]="login.userName" name="username" placeholder="User Name">
+</div>
+<div class="form-group">
+      <input  type="password" class="form-control"   required [(ngModel)]="login.password" name="password" placeholder="Password">
+  </div>
+  <div class="form-group">
+      <!-- <button type="submit" class="btn btn-primary">Login</button> -->
+      <button type="submit"  class="btn btn-primary">Login</button>
+      <a routerLink="registration" class="btn btn-primary" role="button">Register Me!</a>
+  </div>
+</form>

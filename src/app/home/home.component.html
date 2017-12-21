@@ -1,0 +1,87 @@
+<br><br><br><br>
+<!-- <div style="margin-left:30px;">
+    <h2>Contact Management</h2>
+    
+  </div> -->
+  <div class="button-row" *ngIf="sessionAvailable == 'YES'" align=center>
+      <button mat-raised-button color="primary" routerLink="logout">Logout</button>
+     </div>
+     
+<div id="mySidenav" class="sidenav">
+    <a href="home" id="about">Home</a>
+    <a href="#" id="addContact">Add Contacts</a>
+    <a href="#" id="viewContact">View Contacts</a>
+    <a href="#" id="contactUs">Contact Us</a>
+    <a href="SecAdmin"  id="SecAdmin">Security Admin</a> 
+  </div>
+  
+
+  
+  <h2 align="center"> Hello {{loggedInUser}} !</h2>
+<form class="home-form" class="col-md-4 col-md-offset-4" (submit)="addContacts()" novalidate #ContactForm="ngForm">
+    <!-- <button type="submit" mat-raised-button color="primary">Save</button> -->
+    <!-- <div >
+      <button [class.disabled]="hidden" type="submit" mat-raised-button color="primary"  [innerText]="loggedInUser">Security Admin</button>
+    </div>
+     -->
+  <mat-tab-group class="contact-tab-group">
+    <mat-tab label="Add Contacts">
+        <br><br>
+        <mat-form-field class="home-full-width">
+            <input matInput required  [(ngModel)]="contact.contactName" name="cname"  placeholder="Contact Name" [formControl]="cnameFormControl">
+            <mat-error *ngIf="cnameFormControl.hasError('cname') && !cnameFormControl.hasError('required')">
+              Please enter a valid Contact Name
+            </mat-error>
+            <mat-error *ngIf="cnameFormControl.hasError('required')">
+              Contact Name is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <br><br>
+          <mat-form-field class="home-full-width">
+              <span matPrefix>+1 &nbsp;</span>
+            <input type="tel" matInput required  max="10" [(ngModel)]="contact.contactNumber" name="cnumber" placeholder="Contact Number" [formControl]="cnumberFormControl">
+            <mat-error *ngIf="cnumberFormControl.hasError('cnumber') && !cnumberFormControl.hasError('required')">
+              Please enter a valid Contact Number
+            </mat-error>
+            <mat-error *ngIf="cnumberFormControl.hasError('required')">
+              Contact Number is <strong>required</strong>
+            </mat-error>
+          </mat-form-field>
+          <br><br>
+          <div class="form-group">
+            <!-- <button type="submit" class="btn btn-primary">Login</button> -->
+            <button type="submit" mat-raised-button color="primary">Save</button>
+            
+        </div>
+    </mat-tab>
+    <mat-tab label="View My Contacts">
+        
+      <div class="contact-tab-content">
+        Here are my Contacts!
+        
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Contact Name</th>
+                <th>Contact Number</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let contact of contacts">
+                <td>
+                  {{contact.contactName}}
+                </td>
+                <td>
+                  {{contact.contactNumber}}
+                </td>
+                
+              </tr>
+            </tbody>
+          
+          </table>
+      </div>  
+    </mat-tab>
+  </mat-tab-group>
+  
+</form>

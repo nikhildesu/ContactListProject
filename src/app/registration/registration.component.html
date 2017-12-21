@@ -1,37 +1,38 @@
+
 <br>
 <h2 align="center"> Register Me!</h2>
 
-{{registration|json}}
+<!--{{registration|json}}-->
 
 <form #registrationForm="ngForm" class="col-md-4 col-md-offset-4" novalidate (submit)="addRegistration()">
   <div class="form-group">
-    <input type="text" [(ngModel)]="registration.firstName" name="fname" required class="form-control" placeholder="Enter your First Name">
+    <input type="text" required minlength="1" maxlength="15" [(ngModel)]="registration.firstName" name="fname"  class="form-control" placeholder="Enter your First Name">
   </div>
   <div class="form-group">
-    <input type="text" [(ngModel)]="registration.lastName" name="lname" required class="form-control" placeholder="Enter your Last Name">
+    <input type="text" required minlength="1" maxlength="15" [(ngModel)]="registration.lastName" name="lname"  class="form-control" placeholder="Enter your Last Name">
   </div>
   <div class="form-group">
-    <mat-radio-group class="example-radio-group" [(ngModel)]="registration.Gender" name="gender" >
+    <mat-radio-group class="example-radio-group" required [(ngModel)]="registration.Gender" name="gender" >
       <mat-radio-button value="male">Male</mat-radio-button>
       <mat-radio-button value="female">Female</mat-radio-button>
     </mat-radio-group>
   </div>
   <div class="form-group">
-    <input type="text"  [(ngModel)]="registration.email" name="email" required class="form-control" placeholder="Enter your email id">
+    <input type="text" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"  minlength="1"  [(ngModel)]="registration.email" name="email" required class="form-control" placeholder="Enter your email id">
   </div>
   <div class="form-group">
-    <input type="number" [(ngModel)]="registration.mobile" name="mobile" required class="form-control" placeholder="Enter your Mobile Number">
+    <input type="number" min="3" required   [(ngModel)]="registration.mobile" name="mobile"  class="form-control" placeholder="Enter your Mobile Number">
   </div>
   <div class="form-group">
-    <input type="text" [(ngModel)]="registration.userid" name="userid" required class="form-control" placeholder="Create an Unique ID">
+    <input type="text" required  minlength="1" maxlength="15"  [(ngModel)]="registration.userid" name="userid"  class="form-control" placeholder="Create an Unique ID">
   </div>
   <div class="form-group">
-    <input type="password" [(ngModel)]="registration.password" name="password" required class="form-control" placeholder="Enter your New password">
+    <input type="password" required minlength="6" maxlength="10"  [(ngModel)]="registration.password" name="password"  class="form-control" placeholder="Enter your New password">
   </div>
   <div class="form-group">
-    <button type="submit" class="btn btn-primary">Register Me</button>
+    <button [disabled]="registrationForm.invalid" type="submit" class="btn btn-primary">Register Me</button>
 
-    <button type="submit" mat-raised-button color="primary">Existing User?</button>
+    <a routerLink="login" class="btn btn-primary" role="button">Existing User?</a>
   </div>
 
 </form>

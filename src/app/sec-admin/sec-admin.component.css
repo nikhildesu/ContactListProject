@@ -1,0 +1,64 @@
+.home-form {
+    min-width: 150px;
+    max-width: 1000px;
+    width: 200%;
+  }
+  
+  .home-full-width {
+    width: 200%;
+  }
+
+  .contact-tab-group {
+    padding-left: 200px;
+    border: 0px solid #e8e8e8;
+  }
+
+  .mat-tab-label {
+    min-width: -100px !important;
+  }
+  
+  .contact-tab-content {
+    
+    min-width: -100px
+  }
+
+  #mySidenav a {
+    position: absolute;
+    left: -10px;
+    transition: 0.5s;
+    padding: 15px;
+    width: 200px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+}
+
+#mySidenav a:hover {
+    left: -0;
+}
+
+#about {
+    top: 230px;
+    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
+}
+
+#addContact {
+    top: 290px;
+    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
+}
+
+#viewContact {
+    top: 350px;
+    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
+}
+
+#contactUs {
+    top: 410px;
+    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
+}
+
+#SecAdmin {
+    top: 470px;
+    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
+}

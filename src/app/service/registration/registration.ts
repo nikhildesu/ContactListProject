@@ -6,4 +6,6 @@ export class Registration {
     mobile: number; 
     userid: string; 
     password: string;
+    createdDate: Date;
+    userRole: string;
 }
