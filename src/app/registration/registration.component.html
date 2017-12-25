@@ -1,9 +1,16 @@
 
+<br><br><br><br>
+
+<div id="appName">
+        <h2 align="center"> Contact List Application</h2>
+      </div>
+<div id="PageCss">
+    <h2 > Register Me!</h2>
 <br>
-<h2 align="center"> Register Me!</h2>
-
+</div>
+<br><br><br><br><br>
 <!--{{registration|json}}-->
-
+{{regSuccess}}
 <form #registrationForm="ngForm" class="col-md-4 col-md-offset-4" novalidate (submit)="addRegistration()">
   <div class="form-group">
     <input type="text" required minlength="1" maxlength="15" [(ngModel)]="registration.firstName" name="fname"  class="form-control" placeholder="Enter your First Name">
@@ -21,18 +28,20 @@
     <input type="text" pattern="^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"  minlength="1"  [(ngModel)]="registration.email" name="email" required class="form-control" placeholder="Enter your email id">
   </div>
   <div class="form-group">
-    <input type="number" min="3" required   [(ngModel)]="registration.mobile" name="mobile"  class="form-control" placeholder="Enter your Mobile Number">
+    <input type="tel"  minlength="10" maxlength="10" required   [(ngModel)]="registration.mobile" name="mobile"  class="form-control" placeholder="Enter your Mobile Number">
   </div>
   <div class="form-group">
     <input type="text" required  minlength="1" maxlength="15"  [(ngModel)]="registration.userid" name="userid"  class="form-control" placeholder="Create an Unique ID">
   </div>
+  {{userIDError}} 
   <div class="form-group">
-    <input type="password" required minlength="6" maxlength="10"  [(ngModel)]="registration.password" name="password"  class="form-control" placeholder="Enter your New password">
+      
+    <input type="password" required minlength="6" maxlength="10"  [(ngModel)]="registration.password" name="password"  class="form-control" placeholder="Enter your New password">(Password should be of 6-10 characters)
   </div>
   <div class="form-group">
     <button [disabled]="registrationForm.invalid" type="submit" class="btn btn-primary">Register Me</button>
 
-    <a routerLink="login" class="btn btn-primary" role="button">Existing User?</a>
+    <a href="../login" class="btn btn-primary" role="button">Existing User?</a>
   </div>
 
 </form>

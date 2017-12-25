@@ -31,6 +31,8 @@ import {AuthGuard} from './service/authGuard/auth.guard';
 import { LogoutComponent } from './logout/logout.component'
 
 import {LogoutModule} from './logout/logout.module';
+import {RegistrationSuccessModule} from '../../src/app/registration-success/registration-success.module';
+
 
 
 @NgModule({
@@ -49,7 +51,8 @@ import {LogoutModule} from './logout/logout.module';
     PostModule,
     HomeModule,
     SecAdminModule,
-    RouterModule
+    RegistrationSuccessModule,
+    RouterModule    
   ],
   providers: [RegistrationService,PostService,LoginService,ManageContactsService,UserDetailsService,
     AuthGuard, {provide: HTTP_INTERCEPTORS, useClass: HttpinterceptorService, multi: true},

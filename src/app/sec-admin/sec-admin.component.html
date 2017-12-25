@@ -1,16 +1,28 @@
-<br><br><br><br>
+<br><br><br><br><br><br><br><br>
 <!-- <app-home></app-home> -->
-
-<div id="mySidenav" class="sidenav">
-    <a href="home" id="about">Home</a>
-    <a href="#" id="addContact">Add Contacts</a>
-    <a href="#" id="viewContact">View Contacts</a>
-    <a href="#" id="contactUs">Contact Us</a>
-    <a href="SecAdmin"  id="SecAdmin">Security Admin</a> 
+<div id="appName">
+    <h2 align="center"> Contact List Application</h2>
   </div>
-  <div ></div>
-  <h2 align="center"> Hello {{loggedInUser}} !</h2>
-
+<div id="loginid">
+    <h3>Hello {{loggedInUserName}} !</h3>
+  </div>
+  <div id="logout" *ngIf="sessionAvailable == 'YES'">
+    <button mat-raised-button color="primary" routerLink="logout">Logout</button>
+   </div>
+   
+<div id="mySidenavHome" class="sidenav">
+  <a href="home" id="about">Home</a>
+ 
+</div>
+<div id="mySidenavAdmin" class="sidenav">
+    
+    <a href="SecAdmin"  id="SecAdmin">Contact  Management</a> 
+  </div>
+  <div id="SearchBox" class="sidenav">
+      <input type="text" (keypress)="contact-tab-content" name="SearchNbr" [(ngModel)]="searchText"  class="form-control" placeholder="Search Contacts" >
+     
+    </div>
+    <br><br><br>
   <mat-tab-group class="contact-tab-group" mat-stretch-tabs="always">
    
     <mat-tab label="Contact Management" mat-stretch-tabs="always">
@@ -31,7 +43,7 @@
             </thead>
             <tbody>
              
-              <tr *ngFor="let contact of contacts">
+              <tr *ngFor="let contact of contacts | contactFilter : searchText">
                   <td>
                       {{contact.createdBy}}
                     </td>
@@ -60,7 +72,7 @@
 
    
   </mat-tab-group>
-  <br><br>
+  <br>
   <div class="form-group" align="center">
     <!-- <button type="submit" class="btn btn-primary">Login</button> -->
     <button type="submit" (click)="deleteContacts()"  mat-raised-button color="primary">Delete All</button>

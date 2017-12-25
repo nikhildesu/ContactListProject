@@ -9,7 +9,8 @@
   }
 
   .contact-tab-group {
-    padding-left: 200px;
+    padding-left: 100px;
+    padding-right: 100px;
     border: 0px solid #e8e8e8;
   }
 
@@ -22,43 +23,94 @@
     min-width: -100px
   }
 
-  #mySidenav a {
+  #mySidenavHome a {
     position: absolute;
-    left: -10px;
+    left: 50px;
     transition: 0.5s;
-    padding: 15px;
+    padding: 10px;
     width: 200px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
+    
+}
+#mySidenavAdmin a {
+    position: absolute;
+    left: 255px;
+    text-align: center;
+    transition: 0.5s;
+    padding: 10px;
+    width: 250px;
     text-decoration: none;
     font-size: 20px;
     color: white;
     border-radius: 0 5px 5px 0;
 }
 
-#mySidenav a:hover {
-    left: -0;
+#SearchBox {
+    position: absolute;
+    left: 800px;
+    text-align: center;
+    transition: 0.5s;
+    padding: 3px;
+    width: 300px;
+    text-decoration: none;
+    font-size: 20px;
+    color: white;
+    border-radius: 0 5px 5px 0;
 }
+
 
 #about {
-    top: 230px;
+    top: 130px;
     background: linear-gradient(to bottom, #669999 0%, #999966 100%);
 }
 
-#addContact {
-    top: 290px;
-    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
-}
-
-#viewContact {
-    top: 350px;
-    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
-}
-
-#contactUs {
-    top: 410px;
-    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
-}
 
 #SecAdmin {
-    top: 470px;
+    top: 130px;
     background: linear-gradient(to bottom, #669999 0%, #999966 100%);
+}
+
+#SearchBox {
+    top: 130px;
+    background: linear-gradient(to bottom, #669999 0%, #999966 100%);
+}
+
+#button-row{
+    position: absolute;
+    right: 40px;
+    width: 300px;
+    top: 140px;
+    padding: 10px;
+}
+#appName{
+    position: absolute;
+    right: 20px;
+    width: 1330px;
+    top: 40px;
+    /* border: 3px solid #73AD21;
+    padding: 5px; */
+    color: white;    
+    font: italic bold 12px/30px Georgia, serif;
+    text-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;
+}
+
+#loginid{
+    position: absolute;
+    right: 20px;
+    top: 10px;
+    /*border-radius: 25px;
+    border: 2px solid #73AD21;*/
+    color: white;    
+    font: italic bold 12px/30px Georgia, serif;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px green;
+    
+}
+#logout{
+    position: absolute;
+    right: 20px;
+    top: 80px;
 }

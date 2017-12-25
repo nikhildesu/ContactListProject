@@ -18,13 +18,11 @@ export class RegistrationService {
     return this.httpService.post(this.config.ContactAppAPI+ 'registration', registration);
     
   }
-  getRegistrationDetails() 
-  {
   
-
+  findUser(userid){ 
+    console.log('find user triggered from registration ');
+    return this.httpService.get<Registration[]>(this.config.ContactAppAPI + 'findUser/' +userid)     
   }
-
-
 
 
 }

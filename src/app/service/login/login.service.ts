@@ -15,7 +15,7 @@ export class LoginService {
   constructor(private httpService: HttpClient, @Inject(APP_CONFIG) private config: IAppConfig) {}
 
   findUser(login: Login){ 
-    console.log('find user triggered ');
+    console.log('find user triggered from login ');
     return this.httpService.get<Login[]>(this.config.ContactAppAPI + 'findUser/' + login.userName)     
   }
 

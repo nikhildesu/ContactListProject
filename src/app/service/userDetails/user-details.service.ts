@@ -11,7 +11,8 @@ sessionData: Registration = new Registration();
   public setUserData(userDetails) {
     this.userData = userDetails;
     //this.isLoggedIn=true;
-    sessionStorage.sessionUserId=this.userData.userid;    
+    sessionStorage.sessionUserId=this.userData.userid; 
+    sessionStorage.sessionUserName=this.userData.firstName;       
     sessionStorage.sessionUserRole=this.userData.userRole;    
     console.log('User details are '+this.userData);
 }

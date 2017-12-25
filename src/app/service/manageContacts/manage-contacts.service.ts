@@ -40,6 +40,12 @@ export class ManageContactsService {
     return this.httpService.delete(this.config.ContactAppAPI+ 'deleteSpecificContact/'+contact._id);
  
   }
+
+  deleteContactsForUser(userid){
+    console.log('specific delete requested for all');
+    return this.httpService.delete<Contact[]>(this.config.ContactAppAPI + 'deleteContactsForUser/'+userid); 
+  }
+
   deleteContacts() 
   {
     console.log('delete requested for all');

@@ -1,0 +1,26 @@
+#appName{
+    position: absolute;
+    right: 20px;
+    width: 1330px;
+    top: 40px;
+    /* border: 3px solid #73AD21;
+    padding: 5px; */
+    color: white;    
+    font: italic bold 12px/30px Georgia, serif;
+    text-shadow: 1px 1px 2px black, 0 0 25px green, 0 0 5px green;
+}
+
+
+#PageCss{
+    position: absolute;
+    
+    /*border-radius: 25px;
+    border: 2px solid #73AD21;*/
+    
+    top: 100px;
+    left: 630px;
+    color: white;    
+    font: italic bold 12px/30px Georgia, serif;
+    text-shadow: 1px 1px 2px black, 0 0 25px blue, 0 0 5px green;
+    
+}

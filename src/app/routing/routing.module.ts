@@ -8,6 +8,7 @@ import { RegistrationComponent} from '../registration/registration.component';
 import {SecAdminComponent} from '../sec-admin/sec-admin.component';
 import {AuthGuard} from '../service/authGuard/auth.guard'
 import { LogoutComponent} from '../logout/logout.component';
+import {RegistrationSuccessComponent} from '../registration-success/registration-success.component'
 
 @NgModule({
   imports: [
@@ -19,7 +20,9 @@ import { LogoutComponent} from '../logout/logout.component';
       {path : ':any/registration' , component: RegistrationComponent},
       {path : 'home' , component: HomeComponent, canActivate: [AuthGuard] },     
       { path : 'SecAdmin' , component: SecAdminComponent, canActivate: [AuthGuard]},
+      { path : ':any/SecAdmin' , component: SecAdminComponent, canActivate: [AuthGuard]},
       { path : ':any/logout' , component: LogoutComponent, canActivate: [AuthGuard]},
+      { path : 'RegSuccess' , component: RegistrationSuccessComponent},
       {path: '' , redirectTo: 'login' , pathMatch:'full'},
       { path: '**', component: PagenotfoundComponent }
     ])

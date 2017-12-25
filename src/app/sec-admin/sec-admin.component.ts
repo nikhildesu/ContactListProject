@@ -15,7 +15,7 @@ import { Location } from '@angular/common';
   selector: 'app-sec-admin',
   templateUrl: './sec-admin.component.html',
   styleUrls: ['./sec-admin.component.css'],
-  encapsulation: ViewEncapsulation.None
+  encapsulation: ViewEncapsulation.None 
 })
 export class SecAdminComponent implements OnInit {
   contact: Contact = new Contact();
@@ -24,14 +24,26 @@ export class SecAdminComponent implements OnInit {
   formSubmitted: boolean = false;
   contacts: Contact[];
   public loggedInUser: string;
+  public sessionAvailable: string;
   public userRole: string;
   public DeleteNotification: string;
   hidden: boolean = true;
+  public loggedInUserName: string;
+
   constructor(private location: Location,public dialog: MatDialog, private manageContactsService: ManageContactsService, private router: Router, private userDetailsService: UserDetailsService) { }
   
   
     ngOnInit() {
-      
+      if(sessionStorage.sessionUserId!= null){
+        console.log('session available');
+        this.sessionAvailable = "YES";
+      }
+      else{
+        console.log('NO session');
+          this.sessionAvailable = "NO";
+        
+      }
+      this.loggedInUserName= sessionStorage.sessionUserName;
        this.userDetails = this.userDetailsService.getUserData();
        //console.log('Logged In Details retreived as follows' +this.userDetails);
       this.loggedInUser= sessionStorage.sessionUserId;
@@ -66,11 +78,24 @@ export class SecAdminComponent implements OnInit {
   }
 
   deleteContacts(){
+
+    if(this.userRole === "admin"){
+      this.hidden = false;
+      console.log('user role found  is ' +this.userRole);
+      if( this.manageContactsService.deleteContacts().subscribe((data) => console.log(data))){
+        location.reload();
+        this.DeleteNotification = 'Contact Deleted Successfully ';
+       }
+    }else{      
+      console.log('user role found  is ' +this.userRole);
+      if( this.manageContactsService.deleteContactsForUser(this.loggedInUser).subscribe((data) => console.log(data))){
+        location.reload();
+        this.DeleteNotification = 'Contact Deleted Successfully ';
+       }
+   
+    }
     
-        if( this.manageContactsService.deleteContacts().subscribe((data) => console.log(data))){
-         location.reload();
-         this.DeleteNotification = 'Contact Deleted Successfully ';
-        }
+        
       }
 
 

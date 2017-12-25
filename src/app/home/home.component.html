@@ -1,30 +1,72 @@
-<br><br><br><br>
+
 <!-- <div style="margin-left:30px;">
     <h2>Contact Management</h2>
     
   </div> -->
-  <div class="button-row" *ngIf="sessionAvailable == 'YES'" align=center>
+  <div id="appName">
+      <h2 align="center"> Contact List Application</h2>
+    </div>
+  <div id="loginid">
+      <h3>Hello {{loggedInUserName}} !</h3>
+    </div>
+    <div id="logout" *ngIf="sessionAvailable == 'YES'">
       <button mat-raised-button color="primary" routerLink="logout">Logout</button>
      </div>
      
-<div id="mySidenav" class="sidenav">
+<div id="mySidenavHome" class="sidenav">
     <a href="home" id="about">Home</a>
-    <a href="#" id="addContact">Add Contacts</a>
-    <a href="#" id="viewContact">View Contacts</a>
-    <a href="#" id="contactUs">Contact Us</a>
-    <a href="SecAdmin"  id="SecAdmin">Security Admin</a> 
+   
   </div>
-  
+  <div id="mySidenavAdmin" class="sidenav">
+      
+      <a href="SecAdmin"  id="SecAdmin">Contact  Management</a> 
+    </div>
+    <div id="SearchBox" class="sidenav">
+        <input type="text" (keypress)="contact-tab-content" name="SearchNbr" [(ngModel)]="searchText"  class="form-control" placeholder="Search Contacts" >
+       
+      </div>
 
-  
-  <h2 align="center"> Hello {{loggedInUser}} !</h2>
-<form class="home-form" class="col-md-4 col-md-offset-4" (submit)="addContacts()" novalidate #ContactForm="ngForm">
+
+<br><br><br><br><br><br><br><br><br><br><br>
+<form class="home-form"  #ContactForm="ngForm" class="col-md-4 col-md-offset-4" (submit)="addContacts()"  novalidate>
     <!-- <button type="submit" mat-raised-button color="primary">Save</button> -->
     <!-- <div >
       <button [class.disabled]="hidden" type="submit" mat-raised-button color="primary"  [innerText]="loggedInUser">Security Admin</button>
     </div>
      -->
+     
   <mat-tab-group class="contact-tab-group">
+   
+    <mat-tab label="View My Contacts">
+        
+      <div class="contact-tab-content">
+        Here are my Contacts!
+        <!-- <div>
+            <input type="text"  name="SearchNbr" [(ngModel)]="searchText"  class="form-control" placeholder="Search Contacts" >
+         </div> -->
+          
+          <table class="table">
+            <thead>
+              <tr>
+                <th>Contact Name</th>
+                <th>Contact Number</th>                
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let contact of contacts | contactFilter : searchText">
+                <td>
+                  {{contact.contactName}}
+                </td>
+                <td>
+                  {{contact.contactNumber}}
+                </td>
+                
+              </tr>
+            </tbody>
+          
+          </table>
+      </div>  
+    </mat-tab>
     <mat-tab label="Add Contacts">
         <br><br>
         <mat-form-field class="home-full-width">
@@ -39,48 +81,21 @@
           <br><br>
           <mat-form-field class="home-full-width">
               <span matPrefix>+1 &nbsp;</span>
-            <input type="tel" matInput required  max="10" [(ngModel)]="contact.contactNumber" name="cnumber" placeholder="Contact Number" [formControl]="cnumberFormControl">
-            <mat-error *ngIf="cnumberFormControl.hasError('cnumber') && !cnumberFormControl.hasError('required')">
+            <input type="tel"  minlength="10" maxlength="10" required matInput [(ngModel)]="contact.contactNumber" name="cnumber" placeholder="Contact Number"  [formControl]="cnumberFormControl">
+            <mat-error *ngIf="validContact == 'NO'">
               Please enter a valid Contact Number
             </mat-error>
             <mat-error *ngIf="cnumberFormControl.hasError('required')">
               Contact Number is <strong>required</strong>
             </mat-error>
           </mat-form-field>
+          
           <br><br>
           <div class="form-group">
             <!-- <button type="submit" class="btn btn-primary">Login</button> -->
-            <button type="submit" mat-raised-button color="primary">Save</button>
+            <button type="submit" mat-raised-button color="primary">Add</button>
             
         </div>
-    </mat-tab>
-    <mat-tab label="View My Contacts">
-        
-      <div class="contact-tab-content">
-        Here are my Contacts!
-        
-          
-          <table class="table">
-            <thead>
-              <tr>
-                <th>Contact Name</th>
-                <th>Contact Number</th>                
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let contact of contacts">
-                <td>
-                  {{contact.contactName}}
-                </td>
-                <td>
-                  {{contact.contactNumber}}
-                </td>
-                
-              </tr>
-            </tbody>
-          
-          </table>
-      </div>  
     </mat-tab>
   </mat-tab-group>
   
