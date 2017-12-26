@@ -9,6 +9,7 @@ import {SecAdminComponent} from '../sec-admin/sec-admin.component';
 import {AuthGuard} from '../service/authGuard/auth.guard'
 import { LogoutComponent} from '../logout/logout.component';
 import {RegistrationSuccessComponent} from '../registration-success/registration-success.component'
+import {ManageRolesComponent} from '../manage-roles/manage-roles.component'
 
 @NgModule({
   imports: [
@@ -23,6 +24,7 @@ import {RegistrationSuccessComponent} from '../registration-success/registration
       { path : ':any/SecAdmin' , component: SecAdminComponent, canActivate: [AuthGuard]},
       { path : ':any/logout' , component: LogoutComponent, canActivate: [AuthGuard]},
       { path : 'RegSuccess' , component: RegistrationSuccessComponent},
+      { path : 'ManageRoles' , component: ManageRolesComponent, canActivate: [AuthGuard]},
       {path: '' , redirectTo: 'login' , pathMatch:'full'},
       { path: '**', component: PagenotfoundComponent }
     ])

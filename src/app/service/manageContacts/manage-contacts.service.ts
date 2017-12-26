@@ -1,5 +1,6 @@
 import { Injectable,Inject } from '@angular/core';
 import {Contact} from './contact';
+import {Registration} from '../registration/registration';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { APP_CONFIG} from '../appconfig/appconfig.service';
 import { IAppConfig} from '../appconfig/Iapp.config';
@@ -52,4 +53,22 @@ export class ManageContactsService {
     return this.httpService.delete(this.config.ContactAppAPI+ 'deleteContacts');
  
   }
+
+  getUsers(){
+    return this.httpService.get<Registration[]>(this.config.ContactAppAPI + 'getUsers');    
+  }
+
+  
+  GrantAccess(user: Registration) 
+  {
+    console.log('update requested for contact ' +user._id);
+    return this.httpService.put(this.config.ContactAppAPI+ 'GrantAccess/'+user._id, user);
+  }
+  RevokeAccess(user: Registration) 
+  {
+    console.log('update requested for contact ' +user._id);
+    return this.httpService.put(this.config.ContactAppAPI+ 'RevokeAccess/'+user._id, user);
+  }
+  
+
 }

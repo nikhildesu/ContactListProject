@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit {
   //cNameFilter: Contact = new Contact();
   searchText: string;  
   maxNum = 10;
-
+  public AdminRole: string;
+  
   public sessionAvailable: string;
   constructor(private manageContactsService: ManageContactsService, private router: Router, private userDetailsService: UserDetailsService) { }
 
@@ -51,11 +52,15 @@ export class HomeComponent implements OnInit {
      console.log('Logged In Details retreived from session' +sessionStorage.sessionUserId);
     this.loggedInUserName= sessionStorage.sessionUserName;
     this.loggedInUser= sessionStorage.sessionUserId;
-    this.userRole= this.userDetails.userRole;
+    this.userRole= sessionStorage.sessionUserRole;
     console.log('loggedInUser is ' +this.userRole);
-    if(this.userRole= 'admin'){
+    
+    if(this.userRole === "admin"){
+      this.AdminRole = "YES";
       this.hidden = false;
       console.log('hidden is ' +this.hidden);
+    }else{
+      this.AdminRole = "NO";
     }
 
     this.manageContactsService.getSpecificContacts(this.loggedInUser).subscribe((data) =>     

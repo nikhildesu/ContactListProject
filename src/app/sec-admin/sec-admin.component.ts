@@ -29,7 +29,8 @@ export class SecAdminComponent implements OnInit {
   public DeleteNotification: string;
   hidden: boolean = true;
   public loggedInUserName: string;
-
+  public AdminRole: string;
+  
   constructor(private location: Location,public dialog: MatDialog, private manageContactsService: ManageContactsService, private router: Router, private userDetailsService: UserDetailsService) { }
   
   
@@ -50,6 +51,7 @@ export class SecAdminComponent implements OnInit {
       this.userRole= sessionStorage.sessionUserRole;
       console.log('loggedInUser is ' +this.loggedInUser + ' as role ' + this.userRole);
       if(this.userRole === "admin"){
+        this.AdminRole = "YES";
         this.hidden = false;
         console.log('user role found  is ' +this.userRole);
         this.manageContactsService.getContacts().subscribe((data) =>     
@@ -57,6 +59,7 @@ export class SecAdminComponent implements OnInit {
          (err) => console.log(err.message));
       }else{      
         console.log('user role found  is ' +this.userRole);
+        this.AdminRole = "NO";
        this.manageContactsService.getSpecificContacts(this.loggedInUser).subscribe((data) =>     
        this.contacts = data,
         (err) => console.log(err.message));
@@ -80,6 +83,7 @@ export class SecAdminComponent implements OnInit {
   deleteContacts(){
 
     if(this.userRole === "admin"){
+      
       this.hidden = false;
       console.log('user role found  is ' +this.userRole);
       if( this.manageContactsService.deleteContacts().subscribe((data) => console.log(data))){

@@ -17,7 +17,7 @@ export class AppComponent implements OnInit{
     console.log('session check for user id '  +sessionStorage.sessionUserId);
     if(sessionStorage.sessionUserId!= null){
       console.log('session available');
-      this.sessionAvailable = "YES";
+      this.sessionAvailable = "YES"; 
     }
     else{
         this.sessionAvailable = "NO";

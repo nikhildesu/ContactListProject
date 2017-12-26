@@ -21,6 +21,10 @@
       
       <a href="SecAdmin"  id="SecAdmin">Contact  Management</a> 
     </div>
+    <div id="mySidenavAdminRoles" *ngIf="AdminRole == 'YES'">
+        
+        <a href="ManageRoles"  id="ManageRoles">Manage Roles</a> 
+      </div>
     <div id="SearchBox" class="sidenav">
         <input type="text" (keypress)="contact-tab-content" name="SearchNbr" [(ngModel)]="searchText"  class="form-control" placeholder="Search Contacts" >
        

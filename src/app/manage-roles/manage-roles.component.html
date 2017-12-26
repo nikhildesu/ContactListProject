@@ -29,43 +29,45 @@
     <br><br><br>
   <mat-tab-group class="contact-tab-group" mat-stretch-tabs="always">
    
-    <mat-tab label="Contact Management" mat-stretch-tabs="always">
+    <mat-tab label="Role Management" mat-stretch-tabs="always">
         
       <div class="contact-tab-content">
         
-        {{DeleteNotification}}
-          
+        {{Notification}}
+          {{ErrorNotify}}
           <table class="table">
             <thead>
               <tr>
-                <th>Created By</th> 
-                <th>Contact Name</th>
-                <th>Contact Number</th>   
-                <th>Created On</th>  
-                          
+                <th>User ID</th> 
+                <th>First Name</th>
+                <th>Last Name</th>   
+                <th>Current Role</th>  
+                <th>Grant Role</th>   
+                <th>Revoke Role</th>         
               </tr>
             </thead>
             <tbody>
              
-              <tr *ngFor="let contact of contacts | contactFilter : searchText">
+              <tr *ngFor="let user of users | contactFilter : searchText">
                   <td>
-                      {{contact.createdBy}}
+                      {{user.userid}}
                     </td>
                 <td>
-                  {{contact.contactName}}
+                  {{user.firstName}}
                 </td>
                 <td>
-                  {{contact.contactNumber}}
+                  {{user.lastName}}
                 </td>
                 <td>
-                    {{contact.createdDate | date: 'MM/dd/yyyy'}}
+                    {{user.userRole}}
                   </td>
+               
                   
                 <td>
-                    <button type="submit" (click)="editContact(contact)" mat-raised-button color="primary">Edit</button>
+                    <button type="submit" (click)="GrantAccess(user)" mat-raised-button color="primary">Grant Admin</button>
                   </td>
                 <td>
-                <button type="submit" (click)="deleteContact(contact)"  mat-raised-button color="primary">Delete</button>
+                <button type="submit" (click)="RevokeAccess(user)"  mat-raised-button color="primary">Revoke Admin</button>
               </td>
               </tr>
             </tbody>
@@ -76,10 +78,5 @@
 
    
   </mat-tab-group>
-  <br>
-  <div class="form-group" align="center">
-    <!-- <button type="submit" class="btn btn-primary">Login</button> -->
-    <button type="submit" (click)="deleteContacts()"  mat-raised-button color="primary">Delete All</button>
-    
-</div>
+ 
 <!-- </form>-->

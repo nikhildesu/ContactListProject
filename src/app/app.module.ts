@@ -32,6 +32,7 @@ import { LogoutComponent } from './logout/logout.component'
 
 import {LogoutModule} from './logout/logout.module';
 import {RegistrationSuccessModule} from '../../src/app/registration-success/registration-success.module';
+import {ManageRolesModule} from '../../src/app/manage-roles/manage-roles.module';
 
 
 
@@ -52,6 +53,7 @@ import {RegistrationSuccessModule} from '../../src/app/registration-success/regi
     HomeModule,
     SecAdminModule,
     RegistrationSuccessModule,
+    ManageRolesModule,
     RouterModule    
   ],
   providers: [RegistrationService,PostService,LoginService,ManageContactsService,UserDetailsService,
