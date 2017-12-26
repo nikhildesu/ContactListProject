@@ -3,7 +3,8 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { MatButtonModule, MatRadioModule, MatFormFieldModule, MatInputModule, MatTabsModule, MatDialogModule} from '@angular/material';
 import {RouterModule} from '@angular/router';
-import {ContactFilterPipe} from '../custompipes/contact-filter.pipe'
+import {ContactFilterPipe} from '../custompipes/contact-filter.pipe';
+import {RolesearchPipe} from '../custompipes/rolesearch.pipe';
 // import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
 @NgModule({
@@ -19,7 +20,7 @@ import {ContactFilterPipe} from '../custompipes/contact-filter.pipe'
     MatDialogModule,
     RouterModule
   ],
-  declarations: [ContactFilterPipe],
+  declarations: [ContactFilterPipe,RolesearchPipe],
   exports: [FormsModule, 
     ReactiveFormsModule,
     MatButtonModule,
@@ -29,7 +30,8 @@ import {ContactFilterPipe} from '../custompipes/contact-filter.pipe'
     MatTabsModule,
     MatDialogModule,
     RouterModule,
-    ContactFilterPipe
+    ContactFilterPipe,
+    RolesearchPipe
   ]
 })
 export class SharedModule { }

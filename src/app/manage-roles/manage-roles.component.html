@@ -23,17 +23,17 @@
       <a href="ManageRoles"  id="ManageRoles">Manage Roles</a> 
     </div>
   <div id="SearchBox" class="sidenav">
-      <input type="text" (keypress)="contact-tab-content" name="SearchNbr" [(ngModel)]="searchText"  class="form-control" placeholder="Search Contacts" >
+      <input type="text" (keypress)="contact-tab-content" name="SearchNbr" [(ngModel)]="searchText"  class="form-control" placeholder="Search Users" >
      
     </div>
     <br><br><br>
   <mat-tab-group class="contact-tab-group" mat-stretch-tabs="always">
-   
+      
     <mat-tab label="Role Management" mat-stretch-tabs="always">
-        
+        {{Notification}}
       <div class="contact-tab-content">
         
-        {{Notification}}
+        
           {{ErrorNotify}}
           <table class="table">
             <thead>
@@ -48,7 +48,7 @@
             </thead>
             <tbody>
              
-              <tr *ngFor="let user of users | contactFilter : searchText">
+              <tr *ngFor="let user of users | rolesearch : searchText">
                   <td>
                       {{user.userid}}
                     </td>
@@ -59,7 +59,7 @@
                   {{user.lastName}}
                 </td>
                 <td>
-                    {{user.userRole}}
+                   <b> {{user.userRole | uppercase}}</b>
                   </td>
                
                   
