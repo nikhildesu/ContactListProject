@@ -53,14 +53,15 @@ export class HomeComponent implements OnInit {
     this.loggedInUserName= sessionStorage.sessionUserName;
     this.loggedInUser= sessionStorage.sessionUserId;
     this.userRole= sessionStorage.sessionUserRole;
-    console.log('loggedInUser is ' +this.userRole);
+    console.log('loggedInUser is ' +this.userRole); 
     
     if(this.userRole === "admin"){
+
       this.AdminRole = "YES";
       this.hidden = false;
-      console.log('hidden is ' +this.hidden);
+      console.log('hidden is ' +this.hidden); 
     }else{
-      this.AdminRole = "NO";
+      this.AdminRole = "NO"; 
     }
 
     this.manageContactsService.getSpecificContacts(this.loggedInUser).subscribe((data) =>     

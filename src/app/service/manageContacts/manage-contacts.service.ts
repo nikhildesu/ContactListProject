@@ -10,6 +10,10 @@ import { Http, Response, Headers, RequestOptions } from '@angular/http';
 export class ManageContactsService {
 
   contact: Contact = new Contact();
+  updateContactData: any;
+  deleteOneContactData: any;
+  grantAccessData: any;
+  revokeAccessData: any;
 
   constructor(private httpService: HttpClient, @Inject(APP_CONFIG) private config: IAppConfig) { }
 
@@ -32,13 +36,15 @@ export class ManageContactsService {
   }
   updateContacts(contact: Contact) 
   {
-    console.log('update requested for contact ' +contact._id);
-    return this.httpService.put(this.config.ContactAppAPI+ 'updateContacts/'+contact._id, contact);
+    this.updateContactData=contact;
+    console.log('update requested for contact ' +this.updateContactData._id);
+    return this.httpService.put(this.config.ContactAppAPI+ 'updateContacts/'+this.updateContactData._id, contact);
   }
   deleteOneContact(contact: Contact) 
   {
-    console.log('delete requested for contact ' +contact._id);
-    return this.httpService.delete(this.config.ContactAppAPI+ 'deleteSpecificContact/'+contact._id);
+    this.deleteOneContactData=contact;
+    console.log('delete requested for contact ' +this.deleteOneContactData._id);
+    return this.httpService.delete(this.config.ContactAppAPI+ 'deleteSpecificContact/'+this.deleteOneContactData._id);
  
   }
 
@@ -61,13 +67,15 @@ export class ManageContactsService {
   
   GrantAccess(user: Registration) 
   {
-    console.log('update requested for contact ' +user._id);
-    return this.httpService.put(this.config.ContactAppAPI+ 'GrantAccess/'+user._id, user);
+    this.grantAccessData=user;
+    console.log('update requested for contact ' +this.grantAccessData._id);
+    return this.httpService.put(this.config.ContactAppAPI+ 'GrantAccess/'+this.grantAccessData._id, user);
   }
   RevokeAccess(user: Registration) 
   {
-    console.log('update requested for contact ' +user._id);
-    return this.httpService.put(this.config.ContactAppAPI+ 'RevokeAccess/'+user._id, user);
+    this.revokeAccessData=user;
+    console.log('update requested for contact ' +this.revokeAccessData._id);
+    return this.httpService.put(this.config.ContactAppAPI+ 'RevokeAccess/'+this.revokeAccessData._id, user);
   }
   
 

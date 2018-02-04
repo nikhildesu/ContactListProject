@@ -14,7 +14,7 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
   login: Login = new Login();
-  loginData:  Login = new Login();
+  loginData: any;
   private status: boolean;
   public loggedInUser: string;
   public loginError: string;
@@ -64,11 +64,11 @@ export class LoginComponent implements OnInit {
      console.log('user entered Pwd is ' + loggedPwd);
 
     this.loginService.getValidateUser(this.login).subscribe((data) => {
-      
+      this.loginData=data;
      console.log(data);
-     let userPwd = data.password;
-     console.log('Pwd from db is ' + data.password);
-     if (loggedPwd === userPwd) {
+     let userPwd = this.loginData.password; 
+     console.log('Pwd from db is ' + userPwd);
+     if (loggedPwd === userPwd) { 
        console.log('login success');
        this.isLoggedIn = true;
        // this.loggedInUser = data.userName;
