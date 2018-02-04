@@ -28,7 +28,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 import { SecAdminModule} from './sec-admin/sec-admin.module';
 import {HomeModule} from './home/home.module';
 import {AuthGuard} from './service/authGuard/auth.guard';
-import { LogoutComponent } from './logout/logout.component'
+
 
 import {LogoutModule} from './logout/logout.module';
 import {RegistrationSuccessModule} from '../../src/app/registration-success/registration-success.module';
@@ -40,8 +40,7 @@ import {ManageRolesModule} from '../../src/app/manage-roles/manage-roles.module'
 @NgModule({
   declarations: [
     AppComponent,
-    PagenotfoundComponent,
-    LogoutComponent
+    PagenotfoundComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +54,7 @@ import {ManageRolesModule} from '../../src/app/manage-roles/manage-roles.module'
     SecAdminModule,
     RegistrationSuccessModule,
     ManageRolesModule,
+    LogoutModule,
     RouterModule    
   ],
   providers: [RegistrationService,PostService,LoginService,ManageContactsService,UserDetailsService,
